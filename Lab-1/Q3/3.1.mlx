@@ -1,0 +1,7 @@
+A=load('ECG_Data.txt');
+y = size(A);
+A(:,1);
+figure; plot(A(:,1))
+xlabel('Samples', "FontSize",18);
+ylabel('ECG', "FontSize",18);
+title('Q3.1', 'FontSize',20)
