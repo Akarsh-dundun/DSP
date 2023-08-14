@@ -1,0 +1,9 @@
+%Question 1
+%Part 1
+t = linspace(-1,1,1000);
+a = 1 + mod(30,3);
+y1 = sin(20*pi*a*t);
+figure; plot(t,y1)
+xlabel('t_{seconds}', "FontSize",18);
+ylabel('y1(t)  ', "FontSize",18);
+title('Q1.1', 'FontSize',20)
