@@ -1,0 +1,6 @@
+con = load('ConvFile1.txt');
+[s,Fs] = audioread('Track001.wav');
+res = conv2(s, con);
+audiowrite('conv.wav', res, Fs);
+sound(res, Fs);
+
