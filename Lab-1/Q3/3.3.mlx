@@ -1,0 +1,4 @@
+a = 1 + mod(030,3)
+x ="Track00" + a + ".wav"
+[y,Fs] = audioread(x)
+sound(y,Fs)
