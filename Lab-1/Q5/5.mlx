@@ -1,0 +1,11 @@
+a = 1 + mod(030,3)
+r = 0.001 %time resolution
+N = 5000 % samples
+T = N*r %upper bound
+t = linspace(0,T,N)
+w1 = sin(2*pi*200*a*t)
+w2 = sin(2*pi*220*a*t)
+Fs = 44100 %sample frequency
+w3 = [w1(1:2500) w2(2501:5000)]
+audiowrite("sg1.wav",w3,Fs)
+sound(w3,Fs)
