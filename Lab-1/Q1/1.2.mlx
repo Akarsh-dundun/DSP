@@ -1,0 +1,8 @@
+t = linspace(-1,1,1000);
+a = 1 + mod(30,3);
+%Part 2
+y2 = cos((5*pi*a*t) + (pi/4));
+figure; plot(t, y2)
+xlabel('t_{seconds}', "FontSize",18);
+ylabel('y2(t)  ', "FontSize",18);
+title('Q1.2', 'FontSize',20)
