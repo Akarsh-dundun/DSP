@@ -1,0 +1,21 @@
+july = load('RainFallIndia_July.txt');
+jan = load('RainFallIndia_Jan.txt');
+
+M_jul = string(mean(july(:,1)))
+M_jan = string(mean(jan(:,1)))
+
+S_jul = string(std(july(:,1)))
+S_jan = string(std(jan(:,1)))
+
+figure; histogram(july(:,1))
+
+% put the textbox at 75% of the width and 
+% 10% of the height of the figure
+title('Q3.2 July', 'FontSize',20)
+annotation('textbox', [0.45, 0.77, 0.1, 0.1], 'String', 'Mean: ' + M_jul)
+annotation('textbox', [0.45, 0.67, 0.1, 0.1], 'String','Standard Deviation: ' + S_jul)
+
+figure; histogram(jan(:,1))
+title('Q3.2 January', 'FontSize',20)
+annotation('textbox', [0.45, 0.77, 0.1, 0.1], 'String', 'Mean: ' + M_jan)
+annotation('textbox', [0.45, 0.67, 0.1, 0.1], 'String','Standard Deviation: ' + S_jan)
