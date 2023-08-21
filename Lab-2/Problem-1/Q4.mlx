@@ -1,0 +1,30 @@
+%a
+Fs = 14*a;
+T = 1/Fs;
+t =[0:T:a];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+subplot(3,1,1)
+plot(t,s,'b')
+ylabel('Signal');
+xlabel('t(sec)');
+title('Linear interpolation')
+
+%b
+Fs = 20*a;
+T = 1/Fs;
+t =[0:T:a];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+subplot(3,1,2)
+plot(t,s,'r')
+ylabel('Signal');
+xlabel('t(sec)');
+
+%c
+Fs = 9*a;
+T = 1/Fs;
+t =[0:T:a];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+subplot(3,1,3)
+plot(t,s,'m')
+ylabel('Signal');
+xlabel('t(sec)');
