@@ -1,0 +1,64 @@
+%Question 2:
+% Upsampling
+Fs = 10;
+t = linspace(0,1,Fs);
+Do = sin(2*pi*261.63*t);
+Re = sin(2*pi*293.66*t);
+Mi = sin(2*pi*329.63*t);
+Fa = sin(2*pi*349.23*t);
+So = sin(2*pi*392.00*t);
+La = sin(2*pi*220.00*t);
+Ti = sin(2*pi*246.94*t);
+z = [Do,Re,Mi,Fa,So,La,Ti];
+figure;
+subplot(2,1,1)
+plot(z)
+ylabel('Signal');
+xlabel('t(sec)');
+title('Upsampling')
+
+y1 = upsample(z,3);
+subplot(2,1,2)
+plot(y1)
+ylabel('Signal');
+xlabel('t(sec)');
+
+% Downsampling
+Fs = 80;
+t = linspace(0,1,Fs);
+Do = sin(2*pi*261.63*t);
+Re = sin(2*pi*293.66*t);
+Mi = sin(2*pi*329.63*t);
+Fa = sin(2*pi*349.23*t);
+So = sin(2*pi*392.00*t);
+La = sin(2*pi*220.00*t);
+Ti = sin(2*pi*246.94*t);
+z = [Do,Re,Mi,Fa,So,La,Ti];
+figure;
+subplot(2,1,1)
+plot(z);
+ylabel('Signal');
+xlabel('t(sec)');
+title('Downsampling')
+
+y2 = downsample(z,3);
+subplot(2,1,2)
+plot(y2);
+ylabel('Signal');
+xlabel('t(sec)');
+
+% For audio 
+Fs = 44100;
+t = linspace(0,5,20000);
+Do = sin(2*pi*261.63*t);
+Re = sin(2*pi*293.66*t);
+Mi = sin(2*pi*329.63*t);
+Fa = sin(2*pi*349.23*t);
+So = sin(2*pi*392.00*t);
+La = sin(2*pi*220.00*t);
+Ti = sin(2*pi*246.94*t);
+z = [Do,Re,Mi,Fa,So,La,Ti];
+audiowrite('Tone.wav',z,Fs);
+%sound(z,44100);
+%sound(z,22050);
+%sound(z,10250);
