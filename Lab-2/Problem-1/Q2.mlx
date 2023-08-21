@@ -1,0 +1,5 @@
+%Part 2
+s = x1(a,t)+x2(a,t)+x3(a,t);
+plot(t,s,'r')
+ylabel('Signal');
+xlabel('t(sec)');
