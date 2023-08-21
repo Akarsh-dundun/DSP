@@ -1,0 +1,14 @@
+
+a = 1 + mod(30,3);
+t = [0:0.001:1/a];
+x1 = inline("a*cos(2*pi*5*a*t)",'a','t');
+x2 = inline("(a/2)*cos(2*pi*6*a*t)",'a','t');
+x3 = inline("(a/4)*cos(2*pi*10*a*t)",'a','t');
+hold on
+plot(t,x1(a,t),'m')
+plot(t,x2(a,t),'b')
+plot(t,x3(a,t),'r')
+ylabel('Signal');
+xlabel('t(sec)');
+legend('y1(t)','y2(t)','y3(t)');
+hold off
