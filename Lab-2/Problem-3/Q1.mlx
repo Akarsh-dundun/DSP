@@ -1,0 +1,17 @@
+%Question 3:
+[s,Fs] =audioread('Track001.wav');
+y1 = downsample(s,2);
+figure;
+subplot(2,1,1)
+plot(y1)
+ylabel('Signal');
+xlabel('t(sec)');
+title('Upsampling of factor 2')
+y2 = upsample(s,3);
+subplot(2,1,2)
+plot(y2)
+ylabel('Signal');
+xlabel('t(sec)');
+title('Upsampling of factor 3')
+%sound(y1,Fs)
+%sound(y2,Fs)
