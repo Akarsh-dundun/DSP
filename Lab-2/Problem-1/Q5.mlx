@@ -1,0 +1,61 @@
+%a
+fs = 14*a;
+T = 1/fs;
+t =[0:T:a-T];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+N=length(s);
+y=fft(s,N); 
+z=fftshift(y); 
+f_vec=[0:1:N-1]*fs/N-fs/2; 
+amplitude_spectra=abs(z)/fs; 
+amplitude_spectra=abs(z)*T;
+figure;stem(f_vec,abs(amplitude_spectra).^2);
+xlabel('Frequency [Hz]')
+ylabel('Energy/Hz')
+title('Energy density spectrum')
+grid on
+set(gcf,'color','w');
+axis tight
+%calculate total energy
+Eg=sum(s.^2)*T 
+
+%b
+fs = 20*a;
+T = 1/fs;
+t =[0:T:a-T];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+N=length(s);
+y=fft(s,N); 
+z=fftshift(y); 
+f_vec=[0:1:N-1]*fs/N-fs/2; 
+amplitude_spectra=abs(z)/fs; 
+amplitude_spectra=abs(z)*T;
+figure;stem(f_vec,abs(amplitude_spectra).^2);
+xlabel('Frequency [Hz]')
+ylabel('Energy/Hz')
+title('Energy density spectrum')
+grid on
+set(gcf,'color','w');
+axis tight
+Eg=sum(s.^2)*T 
+
+%c
+fs = 9*a;
+T = 1/fs;
+t =[0:T:a-T];
+s = x1(a,t)+x2(a,t)+x3(a,t);
+N=length(s);
+y=fft(s,N); 
+z=fftshift(y); 
+f_vec=[0:1:N-1]*fs/N-fs/2; 
+amplitude_spectra=abs(z)/fs; 
+amplitude_spectra=abs(z)*T;
+figure;stem(f_vec,abs(amplitude_spectra).^2);
+xlabel('Frequency [Hz]')
+ylabel('Energy/Hz')
+title('Energy density spectrum')
+grid on
+set(gcf,'color','w');
+axis tight
+Eg=sum(s.^2)*T 
+
