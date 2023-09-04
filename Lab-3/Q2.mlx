@@ -1,0 +1,4 @@
+% Q2
+[s1, Fs1] = audioread('Whistling\Key.wav');
+fftPlot('Whistling\Key.wav')
+Keylock('Whistling\key.wav')
