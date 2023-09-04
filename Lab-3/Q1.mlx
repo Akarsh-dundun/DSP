@@ -1,0 +1,18 @@
+% Q1 
+% Subproblem 1
+fftPlot('piano1.wav')
+fftPlot('trumpet1.wav')
+fftPlot('violin1.wav')
+fftPlot('flute1.wav')
+
+% Subproblem 2
+fundamentalFrequency('trumpet1.wav')
+fundamentalFrequency('violin1.wav')
+fundamentalFrequency('piano1.wav')
+fundamentalFrequency('flute1.wav')
+fundamentalFrequency('piano2.wav')
+fundamentalFrequency('flute2.wav')
+fundamentalFrequency('piano3.wav')
+fundamentalFrequency('flute3.wav')
+fundamentalFrequency('piano4.wav')
+fundamentalFrequency('flute4.wav')
