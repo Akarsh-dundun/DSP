@@ -1,0 +1,34 @@
+Fs = 120;
+t = 0:1/Fs:2;
+y = sin(2*pi*15*a*t);
+Y = fft(y,120);
+N = length(Y)
+f = (0:Fs/(N-1):Fs);
+figure
+hold on
+stem(f(1:120),abs(Y/N))
+title("Amplitude spectrum")
+xlabel("frequency(Hz)")
+ylabel("Magnitude")
+
+n = 130
+Y1 = fft(y,n);
+N = length(Y1)
+
+f = (0:Fs/(N-1):Fs);
+stem(f(1:n),abs(Y1)/N)
+legend("120 samples","130 samples")
+hold off
+
+Fs = 120
+for i = 40:40:240 
+    Yn = fft(y,i);
+    N1 = length(Yn);
+    f = (0:Fs/(N1-1):Fs);
+    subplot(3,2,i/40)
+    stem(f,abs(Yn)/N)
+    title("Spectrum of " + i + " Samples")
+    xlabel("Frequency(Hz)")
+    ylabel("Magnitude")
+end
+
