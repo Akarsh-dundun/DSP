@@ -1,0 +1,42 @@
+x = load("Exp4Data1.txt");
+win = x';
+Fs = 5000;
+N = 10000;
+f= 0:Fs/N:Fs/2;
+Z = abs(fft(win,N));
+Z = Z(1:fix(N/2+1));
+c = islocalmax(Z,"MinProminence",50);
+plot(f,Z,f(c),Z(c),"r*")
+title("Amplitude spectrum of ExpData4 by hamming window");
+xlabel("Frequency(Hz)")
+ylabel("Magnitude")
+
+freq = f(c)/Fs
+
+x = load("Exp4Data1.txt");
+win = x'.*hamming(length(x));
+Fs = 5000;
+N = 10000;
+f= 0:Fs/N:Fs/2;
+Z = abs(fft(win,N));
+Z = Z(1:fix(N/2+1));
+c = islocalmax(Z,"MinProminence",50);
+plot(f,Z,f(c),Z(c),"r*")
+title("Amplitude spectrum of ExpData4 by hamming window");
+xlabel("Frequency(Hz)")
+ylabel("Magnitude")
+freq = f(c)/Fs
+
+x = load("Exp4Data1.txt");
+win = x'.*rectwin(length(x));
+Fs = 5000;
+N = 10000;
+f= 0:Fs/N:Fs/2;
+Z = abs(fft(win,N));
+Z = Z(1:fix(N/2+1));
+c = islocalmax(Z,"MinProminence",50);
+plot(f,Z,f(c),Z(c),"r*")
+title("Amplitude spectrum of ExpData4 by rectangular window");
+xlabel("Frequency(Hz)")
+ylabel("Magnitude")
+freq = f(c)/Fs
