@@ -1,0 +1,11 @@
+Fs = 200;
+f = (0:Fs/(length(xa)-1):Fs)*10;
+for i = n
+    figure
+    xan = xa(1:i).*(hann(i))';
+    Z = fft(xan,i);
+    stem(200*f(1:i)/i,abs(Z)/length(Z))
+    title("Amplitude spectrum of " + i + " samples using Hann window")
+    xlabel("frequency(Hz)")
+    ylabel("Magnitude")
+end
