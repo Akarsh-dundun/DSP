@@ -1,0 +1,16 @@
+Fs = 200
+t = 0:1/Fs:10
+A = 120
+B = 126
+xa = 0.1*sin(A*pi*t) + cos(B*pi*t);
+f = (0:Fs/(length(xa)-1):Fs)*10
+n = [215 415 1115 1515 1915]
+
+for i = n
+    figure
+    Z = fft(xa,i);
+    stem(200*f(1:i)/i,abs(Z)/length(Z))
+    title("Amplitude spectrum of " + i + " samples")
+    xlabel("frequency(Hz)")
+    ylabel("Magnitude")
+end
