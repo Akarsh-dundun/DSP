@@ -1,0 +1,74 @@
+%Question 1
+%subpart 1
+Fs = 100;
+t = 0 : 1/Fs : 10;
+f = (10-4)*t/10 + 4;
+y = sin(2*pi.*f.*t);
+
+figure;
+plot(t, y, 'r')
+title('Q1 plot')
+xlabel('t (in s)')
+ylabel('x(t)')
+
+%Subpart 2
+% Plotting the fast fourier transform
+figure;
+fftresult = abs(fft(y));
+plot(f, fftresult,'b')
+
+hold on
+
+[pks,frqs] = findpeaks(abs(fftresult))
+f(frqs)
+stem(f(frqs), pks, 'r')
+
+%plot(t, y, 'r')
+title('Amplitude Spectrum')
+xlabel('f (Hz)')
+ylabel('|P1(f)|')
+
+%Subpart 3
+% Hamming Window and spectogram
+figure;
+spectrogram(y);
+title('Normal Spectrograph')
+
+%Hamming 
+figure;
+spectrogram(y, hamming(100),10)
+title('Hamming window of length 100')
+
+figure;
+spectrogram(y, hamming(150),10)
+title('Hamming window of length 150')
+
+figure;
+spectrogram(y, hamming(200),10)
+title('Hamming window of length 200')
+
+% Hanning Window
+figure;
+spectrogram(y, hann(100),10)
+title('Hanning window of length 100')
+
+figure;
+spectrogram(y, hann(150),10)
+title('Hanning window of length 150')
+
+figure;
+spectrogram(y, hann(200),10)
+title('Hanning window of length 200')
+
+% Blackmann Window
+figure;
+spectrogram(y, blackman(100),10)
+title('Blackman window of length 100')
+
+figure;
+spectrogram(y, blackman(150),10)
+title('Blackman window of length 150')
+
+figure;
+spectrogram(y, blackman(200),10)
+title('Blackman window of length 200')
