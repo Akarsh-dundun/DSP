@@ -1,0 +1,12 @@
+%Q3
+[s, Fs] = audioread('recording 1.wav');
+figure;
+%spectrogram(s, hamming(200));
+spectrogram(s(:,2), hamming(200), 190, 8000, 'yaxis')
+title('Recording 1 Spectrograph')
+
+[s, Fs] = audioread('recording 2.wav');
+figure;
+%spectrogram(s, hamming(200));
+spectrogram(s(:,2), hamming(200), 190, 8000, 'yaxis')
+title('Recording 2 Spectrograph')
