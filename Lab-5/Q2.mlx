@@ -1,0 +1,30 @@
+%Q2
+% Subproblem 1
+[s, Fs] = audioread('instru1.wav');
+figure;
+spectrogram(s, hamming(300)); view(-45, 65)
+title('Normal Spectrograph')
+
+% Let us do the conventional way of doing fft
+ffty = fft(s);
+L = length(s);
+
+% Plotting the Amplitude spectrum for each file
+f = Fs*(0:(L/2))/L;
+P2 = abs(ffty/L);
+P1 = P2(1:L/2+1);
+P1(2:end-1) = 2*P1(2:end-1);
+
+%[pks,locs] = findpeaks(P1);
+
+plot(f,P1) 
+title('Amplitude Spectrum')
+xlabel('f (Hz)')
+ylabel('|P1(f)|')
+
+% Q2
+% Subproblem 2
+[s, Fs] = audioread('Opera.wav');
+figure;
+spectrogram(s, hamming(200)); view(-45, 65)
+title('Opera Spectrograph')
