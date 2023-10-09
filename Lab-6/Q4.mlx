@@ -1,0 +1,41 @@
+% Problem 4:
+fs3 = 720;
+Wp3 = 10/(fs3/2);
+Ws3 = 20/(fs3/2);
+
+% Order and cutoff freq 
+[n4,Wn4] = cheb1ord(Wp3,Ws3,-1,40);
+% n,Wn*(fs/2)
+
+% Transfer function 
+[b3,a3] = cheby1(n4,2,Wn4,"low");
+% b,a
+
+% Pole-Zero plot
+[z,p,k] = cheby1(n4,2,Wn4,"low");
+zplane(z,p)
+
+% Bode plot
+% Bode plot 
+H3 = tf(b3,a3,1/fs3);
+f3 = linspace(0,50,100);
+[mag3,phase3] = bode(H3,2*pi*f3);
+plot(f3,db(squeeze(mag3)))
+xlabel("Frequency[Hz]")
+ylabel("Maginitude[dB]")
+title("Bode plot")
+
+
+% Impulse response
+impz(b3,a3,300,300)
+hold on 
+impz(b,a,300,300)
+hold off
+legend('Chebyshev','Butterworth')
+
+% Step response
+stepz(b3,a3,300,300)
+hold on 
+stepz(b,a,300,300)
+hold off
+legend('Chebyshev','Butterworth')
