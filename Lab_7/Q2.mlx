@@ -1,0 +1,49 @@
+%Q2
+% Define the parameters
+alpha = 1;
+wc = pi / (alpha + 1); % Cut-off frequency
+N = 21; % Window length
+
+% Define the filter order
+M = N - 1;
+
+% Define the center of the window
+center = M / 2;
+
+% Generate the time vector
+n = [0:M];
+
+% Compute the sinc function for the ideal low pass filter
+hd = sin(wc * (n - center)) ./ (pi * (n - center + eps)); % Add eps to avoid division by zero
+
+% Apply the window functions
+rectangular_window = rectwin(M+1);
+hamming_window = hanning(M+1);
+
+% Compute the filter coefficients
+h_rectangular = hd .* rectangular_window';
+h_hamming = hd .* hamming_window';
+
+% Plot the impulse responses
+figure;
+%subplot(2,1,1);
+stem([0:M], h_rectangular);
+title('Impulse Response of Rectangular Window');
+xlabel('n');
+ylabel('h[n]');
+
+figure;
+%subplot(2,1,2);
+stem([0:M], h_hamming);
+title('Impulse Response of Hanning Window');
+xlabel('n');
+ylabel('h[n]');
+
+% Perform bode analysis
+figure;
+freqz(h_rectangular, 1);
+title('Bode Plot of Rectangular Window');
+
+figure;
+freqz(h_hamming, 1);
+title('Bode Plot of Hanning Window');
