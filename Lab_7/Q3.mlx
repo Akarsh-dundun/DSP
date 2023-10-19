@@ -1,0 +1,24 @@
+%Q3
+[x, Fs] = audioread('instru1.wav');
+
+% Plot the spectrogram of the original signal
+figure;
+spectrogram(x, hamming(1024), 512, 1024, Fs, 'yaxis');
+title('Spectrogram of Original Signal');
+
+% Design a digital FIR filter to extract the fundamental frequency
+% Here we assume that the fundamental frequency is below 500 Hz
+% You may need to adjust this value based on your specific audio file
+f_norm = 500 / (Fs / 2); % Normalized frequency
+b = fir1(100, f_norm, 'low', hamming(101));
+
+% Apply the filter to the signal
+y = filter(b, 1, x);
+
+% Write the filtered signal into a new .wav file
+audiowrite('filtered_signal.wav', y, Fs);
+
+% Plot the spectrogram of the filtered signal
+figure;
+spectrogram(y, hamming(1024), 512, 1024, Fs, 'yaxis');
+title('Spectrogram of Filtered Signal');
