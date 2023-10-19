@@ -1,0 +1,86 @@
+%Q1
+%first part
+% window length
+N = 50;
+
+rectangular_window = rectwin(N);
+hamming_window = hamming(N);
+hanning_window = hann(N);
+
+%frequency responses
+rectangular_freq = abs(fft(rectangular_window, 1024));
+hamming_freq = abs(fft(hamming_window, 1024));
+hanning_freq = abs(fft(hanning_window, 1024));
+
+f = (0:1023)/1024;
+
+% Plot the time responses
+figure;
+%subplot(3,2,1);
+stem(rectangular_window);
+title('Rectangular Window in Time Domain');
+xlabel('n');
+ylabel('w[n]');
+
+%subplot(3,2,3);
+stem(hamming_window);
+title('Hamming Window in Time Domain');
+xlabel('n');
+ylabel('w[n]');
+
+%subplot(3,2,5);
+stem(hanning_window);
+title('Hanning Window in Time Domain');
+xlabel('n');
+ylabel('w[n]');
+
+% Plot the frequency responses
+%subplot(3,2,2);
+plot(f, 20*log10(rectangular_freq));
+title('Rectangular Window in Frequency Domain');
+xlabel('Normalized Frequency');
+ylabel('Magnitude (dB)');
+
+%subplot(3,2,4);
+plot(f, 20*log10(hamming_freq));
+title('Hamming Window in Frequency Domain');
+xlabel('Normalized Frequency');
+ylabel('Magnitude (dB)');
+
+%subplot(3,2,6);
+plot(f, 20*log10(hanning_freq));
+title('Hanning Window in Frequency Domain');
+xlabel('Normalized Frequency');
+ylabel('Magnitude (dB)');
+
+%part 2
+% DFT length
+DFT_len = 1024;
+
+% window lengths
+window_lengths = [100, 200, 300];
+
+% Loop 
+for i = 1:length(window_lengths)
+    
+    hamming_window = hanning(window_lengths(i));
+    
+    % Zero pad the window to match the DFT length
+    hamming_window_padded = [hamming_window; zeros(DFT_len - window_lengths(i), 1)];
+    
+    % Compute the DFT 
+    hamming_window_DFT = fft(hamming_window_padded);
+    
+    % Normalize the magnitude of the DFT by the window length
+    hamming_window_DFT_normalized = abs(hamming_window_DFT) / window_lengths(i);
+    
+    % frequency axis
+    freq_axis = (0:(DFT_len - 1)) / DFT_len;
+    
+    % Plot the normalized magnitude spectrum
+    figure;
+    plot(freq_axis, 20 * log10(hamming_window_DFT_normalized));
+    title(['Normalized Magnitude Spectrum for N = ', num2str(window_lengths(i))]);
+    xlabel('Normalized Frequency');
+    ylabel('Magnitude (dB)');
+end
